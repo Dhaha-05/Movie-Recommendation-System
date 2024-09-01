@@ -1,0 +1,46 @@
+import pandas as pd
+
+# Load the data
+movies = pd.read_csv('../Datasets/movie.csv')
+links = pd.read_csv('../Datasets/link.csv')
+
+# Merge the data based on movieId
+merged_data = pd.merge(movies, links, on='movieId')
+
+# Remove the year from the movie titles
+merged_data['title'] = merged_data['title'].str.replace(r'\s\(\d{4}\)', '', regex=True)
+
+import requests
+
+# Define a function to fetch movie rating from the TMDB API
+def fetch_movie_rating(tmdb_id):
+    # Make the API request
+    api_key = 'c06cede91056be933f6b25e34556347f'
+    response = requests.get(f'https://api.themoviedb.org/3/movie/{tmdb_id}?api_key={api_key}')
+    # Parse the JSON response
+    movie_data = response.json()
+    # Extract the rating
+    rating = movie_data.get('vote_average', 0)
+    # Return the rating as a dictionary
+    return {'tmdbId':tmdb_id , 'rating': rating}
+
+# Define a list to store the fetched movie ratings
+movie_ratings = []
+
+# Loop through the tmdb_id column in the merged_data dataframe
+for tmdb_id in merged_data['tmdbId']:
+    # Fetch the rating for the current tmdb_id
+    rating_data = fetch_movie_rating(tmdb_id)
+    # Append the fetched rating to the movie_ratings list
+    movie_ratings.append(rating_data)
+
+# Convert the movie_ratings list to a dataframe
+movie_ratings_df = pd.DataFrame(movie_ratings)
+
+
+# Merge the rating_with_tmdb_df dataframe with the merged_data dataframe
+merged_data_with_ratings = pd.merge(merged_data, movie_ratings_df, on='tmdbId')
+
+print(merged_data_with_ratings.head(15))
+
+merged_data_with_ratings.to_csv('new_data.csv', index=False)

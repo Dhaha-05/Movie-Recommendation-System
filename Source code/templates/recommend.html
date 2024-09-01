@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommend Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+</head>
+<body>
+    <h1>Recommend Page</h1>
+
+    <div class="search-container">
+        <form action="/home" method="post">
+            <button type="submit" class="back">Back Home</button>
+        </form>
+        <form action="/signin" method="post">
+            <button type="submit" class="sout">Signout</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Movie Details</h2>
+        <div class="movie-details">
+            <img src="{{ movie_details.poster_path }}" alt="{{ title }} poster"><br>
+            <div class="md-p">
+                <p>Title: {{ movie_details.title }}</p><br>
+                <p>Release Year: {{ movie_details.release_year }}</p><br>
+                <p>Overview: {{ movie_details.overview }}</p><br>
+                <!--<p>Tagline: {{ movie_details.tagline }}</p><br>-->
+                <p>Original Language: {{ movie_details.original_language }}</p><br>
+                <p>Runtime: {{ movie_details.runtime }}</p><br>
+                <p>Rating: {{ movie_details.rating }}</p><br>
+                <p>Trailer: <a href="{{ movie_details.trailer_url }}" target="_blank">Watch Trailer</a></p><br>
+            </div>            
+        </div>
+    </div>
+
+    <div>
+        <h2>Related Movies</h2>
+        <div class="movies-container">
+            {% for title, poster_url in recommended_movies.items() %}
+            <div class="movie-card">
+                <img src="{{ poster_url }}" alt="{{ title }} poster">
+                <p class="movie-title">{{ title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div>
+        <h2>You May Also Like</h2>
+        <div class="movies-container">
+            {% for title, poster_url in recommended_for_user.items() %}
+            <div class="movie-card">
+                <img src="{{ poster_url }}" alt="{{ title }} poster">
+                <p class="movie-title">{{ title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>  
+</body>
+</html>

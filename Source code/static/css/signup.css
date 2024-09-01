@@ -1,0 +1,114 @@
+/* static/css/signup.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background: rgba(235, 7, 102, 0.605);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/static/Images/bg.jpg');
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    height: 100vh;
+}
+.signup-container
+{
+    display:flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color:rgba(0, 0, 0, 0.95);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 50px;
+    border-radius: 50px;
+    height: 670px;
+}
+
+h1 {
+    color: #42da13;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    width: 400px;
+}
+
+label {
+    margin: 10px 0;
+    display: block;
+    text-align: left;
+    width: 100%;
+    color: white;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 50%;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active .spinner {
+    animation: spin 1s ease-in-out infinite;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: rgba(255,255,255,1);
+    border-radius: 50%;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+p {
+    margin-top: 20px;
+    color: whitesmoke;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

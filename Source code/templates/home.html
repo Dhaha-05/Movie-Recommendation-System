@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <h1>Welcome {{ username }}</h1>
+    <form action="{{ url_for('signin') }}" method="post">
+        <button type="submit" class="sout">Signout</button>
+    </form>
+
+    <div class="search-container">
+        <form action="{{ url_for('recommend') }}" method="get">
+            <input type="text" class="search-bar" placeholder="Search movies..." name="sb" id="search-bar" list="movie-list">
+            <datalist id="movie-list">
+                {% for movie in movie_list %}
+                    <option value="{{ movie }}">
+                {% endfor %}
+            </datalist>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Top Rated Movies</h2>
+        <div class="movies-container">
+            {% for title, poster_url in top_rated_posters.items() %}
+            <div class="movie-card">
+                <img src="{{ poster_url }}" alt="{{ title }} poster">
+                <p class="movie-title">{{ title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div>
+        <h2>Latest Movie Releases</h2>
+        <div class="movies-container">
+            {% for title, poster_url in latest_movies_posters.items() %}
+            <div class="movie-card">
+                <img src="{{ poster_url }}" alt="{{ title }} poster">
+                <p class="movie-title">{{ title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>  
+</body>
+</html>

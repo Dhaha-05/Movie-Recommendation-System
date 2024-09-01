@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(3, 3, 5);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color:#fff; 
+}
+
+h2 {
+    margin-top: 40px;
+    color:#fff;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+    max-width: 400px;
+}
+
+button.back {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2de840;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    right: 90px;
+}
+
+button.sout {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e21f29;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    bottom: 36px;
+    left: 105px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensures that the spacing is even */
+}
+
+.movie-card {
+    flex: 1 1 18%; /* Slightly less than 20% to account for margin/padding */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box; /* Includes padding and border in width */
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+    .movie-card {
+        flex: 1 1 24%; /* Adjust to show 4 posters per row on smaller screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .movie-card {
+        flex: 1 1 48%; /* Adjust to show 2 posters per row on even smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .movie-card {
+        flex: 1 1 100%; /* 1 poster per row on mobile screens */
+    }
+}
+
+.movie-title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.movie-details {
+    display: flex;
+    align-items: flex-start; /* Align items at the start of the cross axis (top) */
+    margin-top: 20px;
+}
+
+.movie-details img {
+
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 250px;
+    height: 350px; /* Maintain aspect ratio */
+    border-radius: 10px;
+    
+}
+
+.movie-details p {
+    margin: 0; /* Remove default margins for paragraphs */
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5; /* Adjust line height for better readability */
+    display: flex;
+    flex-direction: row;
+}
+.md-p{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-top: 15px;
+}
